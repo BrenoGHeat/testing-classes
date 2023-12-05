@@ -5,3 +5,5 @@ export interface ITodo{
 }
 
 export type TCreateTodoBody = Omit<ITodo, 'id'>;
+
+export type TUpdateTodoBody = Partial<TCreateTodoBody>;

@@ -18,4 +18,24 @@ export class TodoControllers{
 
         return res.status(201).json(response);
     }
+
+    update(req: Request, res: Response): Response<ITodo>{
+        const id = req.params.id;
+
+        const todoServices = new TodoServices();
+
+        const response = todoServices.update(req.body, Number(id));
+
+        return res.status(200).json(response);
+    }
+
+    delete(req: Request, res: Response): Response<void>{
+        const id = req.params.id;
+
+        const todoServices = new TodoServices();
+
+        const response = todoServices.delete(Number(id));
+
+        return res.status(204).json(response);
+    }
 }
