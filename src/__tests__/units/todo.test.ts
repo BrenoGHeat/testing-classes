@@ -1,3 +1,4 @@
+import { todoCreateBodyMock, todoMock } from "../../__mocks__/todo.mocks";
 import { resetDatabase, todoDatabase } from "../../database/database";
 import { TodoServices } from "../../services/todo.services";
 
@@ -11,26 +12,20 @@ describe("Unit test: todo services", () => {
    test("create todo should work correctly", () => {
       const todoServices = new TodoServices();
 
-      const data = todoServices.create({ title: "Título", content: "Conteúdo" });
+      const data = todoServices.create(todoCreateBodyMock);
 
-      expect(data).toStrictEqual({
-         id: 1,
-         title: "Título",
-         content: "Conteúdo",
-      });
+      expect(data).toStrictEqual(todoMock);
    });
 
    test("get many todos should work correctly", () => {
-      todoDatabase.push({
-         id: 1,
-         title: "Título",
-         content: "Conteúdo",
-      });
+      todoDatabase.push(todoMock);
 
       const todoServices = new TodoServices();
 
       const data = todoServices.getMany();
 
       expect(data).toHaveLength(1);
+
+      expect(data[0]).toStrictEqual(todoMock);
    });
 });
