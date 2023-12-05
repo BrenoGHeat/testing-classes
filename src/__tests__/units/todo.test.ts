@@ -1,4 +1,4 @@
-import { todoCreateBodyMock, todoMock } from "../../__mocks__/todo.mocks";
+import { todoCreateBodyMock, todoMock } from "../__mocks__/todo.mocks";
 import { resetDatabase, todoDatabase } from "../../database/database";
 import { TodoServices } from "../../services/todo.services";
 
