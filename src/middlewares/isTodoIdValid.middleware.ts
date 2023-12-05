@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { todoDatabase } from "../database/database";
+import { todoDatabase } from "../database/prisma";
 
 export class IsTodoIdValid{
     static execute(req: Request, res: Response, next: NextFunction){

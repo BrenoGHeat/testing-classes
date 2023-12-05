@@ -1,4 +1,4 @@
-import { resetDatabase, todoDatabase } from "../../database/database";
+import { resetDatabase, todoDatabase } from "../../database/prisma";
 import { todoMock, todoUpdateBodyMock } from "../__mocks__/todo.mocks";
 import { request } from "../utils/request";
 

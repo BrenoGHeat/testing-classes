@@ -1,4 +1,4 @@
-import { todoDatabase } from "../../database/database"
+import { todoDatabase } from "../../database/prisma"
 import { todoMock } from "../__mocks__/todo.mocks"
 import { request } from "../utils/request"
 

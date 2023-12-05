@@ -3,7 +3,7 @@ import { ITodo } from "../interfaces/todo.interfaces";
 import { TodoServices } from "../services/todo.services";
 
 export class TodoControllers{
-    getMany(req: Request, res: Response): Response<ITodo[]>{
+    async getMany(req: Request, res: Response): Promise<Response<ITodo[]>>{
         const todoServices = new TodoServices();
 
         const response = todoServices.getMany();
@@ -11,7 +11,7 @@ export class TodoControllers{
         return res.status(200).json(response);
     }
     
-    create(req: Request, res: Response): Response<ITodo>{
+    async create(req: Request, res: Response): Promise<Response<ITodo>>{
         const todoServices = new TodoServices();
 
         const response = todoServices.create(req.body);
@@ -19,22 +19,22 @@ export class TodoControllers{
         return res.status(201).json(response);
     }
 
-    update(req: Request, res: Response): Response<ITodo>{
+    async update(req: Request, res: Response): Promise<Response<ITodo>>{
         const id = req.params.id;
 
         const todoServices = new TodoServices();
 
-        const response = todoServices.update(req.body, Number(id));
+        const response = todoServices.update(req.body, id);
 
         return res.status(200).json(response);
     }
 
-    delete(req: Request, res: Response): Response<void>{
+    async delete(req: Request, res: Response): Promise<Response<void>>{
         const id = req.params.id;
 
         const todoServices = new TodoServices();
 
-        const response = todoServices.delete(Number(id));
+        const response = todoServices.delete(id);
 
         return res.status(204).json(response);
     }

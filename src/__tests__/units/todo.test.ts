@@ -1,5 +1,5 @@
 import { todoCreateBodyMock, todoMock, todoUpdateBodyMock } from "../__mocks__/todo.mocks";
-import { resetDatabase, todoDatabase } from "../../database/database";
+import { resetDatabase, todoDatabase } from "../../database/prisma";
 import { TodoServices } from "../../services/todo.services";
 
 describe("Unit test: todo services", () => {
