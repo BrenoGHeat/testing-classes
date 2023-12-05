@@ -1,4 +1,4 @@
-import { todoCreateBodyMock, todoMock } from "../__mocks__/todo.mocks";
+import { todoCreateBodyMock, todoMock, todoUpdateBodyMock } from "../__mocks__/todo.mocks";
 import { resetDatabase, todoDatabase } from "../../database/database";
 import { TodoServices } from "../../services/todo.services";
 
@@ -28,4 +28,24 @@ describe("Unit test: todo services", () => {
 
       expect(data[0]).toStrictEqual(todoMock);
    });
+
+   test("update todo should work correctly", () => {
+      todoDatabase.push(todoMock);
+
+      const todoServices = new TodoServices();
+
+      const data = todoServices.update(todoUpdateBodyMock, todoMock.id);
+
+      expect(data.id).toBe(todoMock.id);
+      expect(data.title).toBe(todoMock.title);
+      expect(data.content).toBe(todoUpdateBodyMock.content);
+   });
+
+   test("delete todo should work correctly", () => {
+      todoDatabase.push(todoMock);
+
+      const todoServices = new TodoServices();
+
+      todoServices.delete(todoMock.id);
+   })
 });
