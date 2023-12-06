@@ -1,11 +1,13 @@
 import { NextFunction, Request, Response } from "express";
-import { todoDatabase } from "../database/prisma";
+import { prisma } from "../database/prisma";
 
 export class IsTodoIdValid{
-    static execute(req: Request, res: Response, next: NextFunction){
+    static async execute(req: Request, res: Response, next: NextFunction){
         const paramsId = req.params.id;
 
-        if(!todoDatabase.some(todo => todo.id === Number(paramsId))){
+        const todo =  await prisma.todo.findFirst({ where: { id: paramsId }});
+
+        if(!todo){
             return res.status(404).json({ message: "Todo not found."});
         }
 

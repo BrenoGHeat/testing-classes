@@ -6,7 +6,7 @@ export class TodoControllers{
     async getMany(req: Request, res: Response): Promise<Response<ITodo[]>>{
         const todoServices = new TodoServices();
 
-        const response = todoServices.getMany();
+        const response = await todoServices.getMany();
 
         return res.status(200).json(response);
     }
@@ -14,7 +14,7 @@ export class TodoControllers{
     async create(req: Request, res: Response): Promise<Response<ITodo>>{
         const todoServices = new TodoServices();
 
-        const response = todoServices.create(req.body);
+        const response = await todoServices.create(req.body);
 
         return res.status(201).json(response);
     }
@@ -24,7 +24,7 @@ export class TodoControllers{
 
         const todoServices = new TodoServices();
 
-        const response = todoServices.update(req.body, id);
+        const response = await todoServices.update(req.body, id);
 
         return res.status(200).json(response);
     }
@@ -34,7 +34,7 @@ export class TodoControllers{
 
         const todoServices = new TodoServices();
 
-        const response = todoServices.delete(id);
+        const response = await todoServices.delete(id);
 
         return res.status(204).json(response);
     }
