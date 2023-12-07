@@ -1,4 +1,8 @@
-import { todoCreateBodyMock, todoMock, todoUpdateBodyMock } from "../__mocks__/todo.mocks";
+import {
+   todoCreateBodyMock,
+   todoMock,
+   todoUpdateBodyMock,
+} from "../__mocks__/todo.mocks";
 import { resetDatabase, todoDatabase } from "../../database/database";
 import { TodoServices } from "../../services/todo.services";
 
@@ -6,7 +10,7 @@ describe("Unit test: todo services", () => {
    // beforeEach, beforeAll, afterEach, afterAll
 
    beforeEach(() => {
-        resetDatabase();
+      resetDatabase();
    });
 
    test("create todo should work correctly", () => {
@@ -47,5 +51,5 @@ describe("Unit test: todo services", () => {
       const todoServices = new TodoServices();
 
       todoServices.delete(todoMock.id);
-   })
+   });
 });
