@@ -5,7 +5,7 @@ import { todoCreateBodyMock } from "../__mocks__/todo.mocks";
 describe("Unit test: create todo", () => {
    beforeEach(async () => {
       await prisma.todo.deleteMany();
-   })
+   });
 
    test("create todo should work correctly", async () => {
       const todoServices = new TodoServices();
